@@ -1,3 +1,5 @@
-export default function Home() {
-  return <>👀👀</>;
-}
+const TodosPage = () => {
+  return <></>;
+};
+
+export default TodosPage;
