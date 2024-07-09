@@ -39,7 +39,7 @@ export async function updateSession(request: NextRequest) {
       url.pathname = "/log-in";
       return NextResponse.redirect(url);
     } else {
-      url.pathname = "/todos";
+      url.pathname = "/todos/today";
       return NextResponse.redirect(url);
     }
   }
@@ -51,7 +51,7 @@ export async function updateSession(request: NextRequest) {
   }
   if (user && request.nextUrl.pathname.startsWith("/log-in")) {
     const url = request.nextUrl.clone();
-    url.pathname = "/todos";
+    url.pathname = "/todos/today";
     console.log(url);
     return NextResponse.redirect(url);
   }
