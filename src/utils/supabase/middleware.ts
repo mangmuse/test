@@ -33,6 +33,17 @@ export async function updateSession(request: NextRequest) {
     data: { user },
   } = await supabase.auth.getUser();
 
+  if (request.nextUrl.pathname === "/") {
+    const url = request.nextUrl.clone();
+    if (!user) {
+      url.pathname = "/log-in";
+      return NextResponse.redirect(url);
+    } else {
+      url.pathname = "/todos";
+      return NextResponse.redirect(url);
+    }
+  }
+
   if (!user && !request.nextUrl.pathname.startsWith("/log-in")) {
     const url = request.nextUrl.clone();
     url.pathname = "/log-in";
@@ -41,6 +52,7 @@ export async function updateSession(request: NextRequest) {
   if (user && request.nextUrl.pathname.startsWith("/log-in")) {
     const url = request.nextUrl.clone();
     url.pathname = "/todos";
+    console.log(url);
     return NextResponse.redirect(url);
   }
 
