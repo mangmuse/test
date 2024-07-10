@@ -10,7 +10,7 @@ export async function GET(request: NextRequest) {
   const { data, error } = await supabase.auth.signInWithOAuth({
     provider: "google",
     options: {
-      redirectTo: "http://localhost:3000/api/log-in/callback",
+      redirectTo: `${process.env.NEXT_PUBLIC_BASE_URL}/api/log-in/callback`,
       scopes: "https://www.googleapis.com/auth/calendar",
     },
   });
