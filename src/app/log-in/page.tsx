@@ -2,6 +2,7 @@
 
 import { createClient } from "@/utils/supabase/client";
 import { useEffect } from "react";
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
 const LogInPage = () => {
   const handleLogIn = async () => {
@@ -9,7 +10,7 @@ const LogInPage = () => {
     const { error } = await supabase.auth.signInWithOAuth({
       provider: "google",
       options: {
-        redirectTo: `${window.location.origin}/api/log-in/callback`,
+        redirectTo: `${BASE_URL}/api/log-in/callback`,
         scopes: "https://www.googleapis.com/auth/calendar",
       },
     });
