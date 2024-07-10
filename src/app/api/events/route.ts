@@ -2,11 +2,11 @@ import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@/utils/supabase/server";
 import { getCalendarEvents } from "@/utils/googleCalendar";
 
+export const dynamic = "force-dynamic";
+
 export const GET = async (req: NextRequest) => {
   try {
     const supabase = createClient();
-
-    // Supabase 세션에서 사용자 액세스 토큰 가져오기
     const {
       data: { session },
       error,
