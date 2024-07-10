@@ -10,6 +10,7 @@ const LogInPage = () => {
       provider: "google",
       options: {
         redirectTo: `${window.location.origin}/api/log-in/callback`,
+        scopes: "https://www.googleapis.com/auth/calendar",
       },
     });
     if (error) console.log("Error logging in:", error.message);
