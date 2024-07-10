@@ -8,12 +8,10 @@ import { useEffect } from "react";
 const TodayTodosPage = () => {
   useEffect(() => {
     (async () => {
-      const supabase = createClient();
-      const accessToken = (await supabase.auth.getSession()).data.session
-        ?.provider_token;
-
-      if (!accessToken) throw new Error();
-
+      // const supabase = createClient();
+      // const accessToken = (await supabase.auth.getSession()).data.session
+      //   ?.provider_token;
+      // if (!accessToken) throw new Error();
       // const calendars = await getCalendars(accessToken);
       // await watchCalendar(
       //   accessToken,
