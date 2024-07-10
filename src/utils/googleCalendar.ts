@@ -58,7 +58,7 @@ export const watchCalendar = async (
     requestBody: {
       id: channelId,
       type: "web_hook",
-      address: `https://test-8zin.vercel.app/api/webhook`,
+      address: `https://test.vercel.app/api/webhook`,
     },
   });
 

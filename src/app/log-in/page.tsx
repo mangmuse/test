@@ -10,7 +10,7 @@ const LogInPage = () => {
     const { error } = await supabase.auth.signInWithOAuth({
       provider: "google",
       options: {
-        redirectTo: `https://test-8zin.vercel.app/api/log-in/callback`,
+        redirectTo: `https://test.vercel.app/api/log-in/callback`,
         scopes: "https://www.googleapis.com/auth/calendar",
       },
     });
