@@ -1,16 +1,19 @@
 import { createClient } from "@/utils/supabase/server";
 import { NextRequest, NextResponse } from "next/server";
 
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
+
 export async function GET(request: NextRequest) {
   const supabase = createClient();
   const scopes = [
     "https://www.googleapis.com/auth/calendar.readonly",
     "https://www.googleapis.com/auth/calendar",
   ];
+
   const { data, error } = await supabase.auth.signInWithOAuth({
     provider: "google",
     options: {
-      redirectTo: `${process.env.NEXT_PUBLIC_BASE_URL}/api/log-in/callback`,
+      redirectTo: `${BASE_URL}/api/log-in/callback`,
       scopes: "https://www.googleapis.com/auth/calendar",
     },
   });

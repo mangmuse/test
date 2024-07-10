@@ -38,7 +38,7 @@ export const GET = async (req: NextRequest) => {
     );
     console.log(accessToken);
     console.log("acacacacacac");
-    const dd = await watchCalendar(
+    await watchCalendar(
       accessToken,
       "b3ab1ef4dca6131054542def12412843e857728ce2189aa22588927ef327ba86@group.calendar.google.com"
     );

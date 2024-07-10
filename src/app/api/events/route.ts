@@ -34,14 +34,7 @@ export const GET = async (req: NextRequest) => {
     // Google Calendar API를 사용하여 이벤트 정보를 가져옴
 
     const events = await getCalendarEvents(accessToken, calendarId);
-    console.log(
-      events,
-      "이게이벤트지이게이벤트지이게이벤트지이게이벤트지이게이벤트지이게이벤트지"
-    );
 
-    console.log(
-      "이거는나오는거지?이거는나오는거지?이거는나오는거지?이거는나오는거지?이거는나오는거지?이거는나오는거지?이거는나오는거지?"
-    );
     return NextResponse.json(events);
   } catch (error) {
     console.error(error);
