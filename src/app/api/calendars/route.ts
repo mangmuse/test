@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@/utils/supabase/server";
 import { getCalendarEvents, getCalendars } from "@/utils/googleCalendar";
 import { google } from "googleapis";
-
+console.log("asd");
 const getOAuth2Client = (accessToken: string) => {
   const oauth2Client = new google.auth.OAuth2();
   oauth2Client.setCredentials({ access_token: accessToken });
