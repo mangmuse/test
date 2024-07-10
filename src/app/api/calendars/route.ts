@@ -32,16 +32,16 @@ export const GET = async (req: NextRequest) => {
 
     const calendars = await getCalendars(accessToken);
 
-    // if (!calendars) throw new Error();
-    // await Promise.all(
-    //   calendars.map((calendar: any) => watchCalendar(accessToken, calendar.id))
-    // );
-    // console.log(accessToken);
-    // console.log("acacacacacac");
-    // await watchCalendar(
-    //   accessToken,
-    //   "b3ab1ef4dca6131054542def12412843e857728ce2189aa22588927ef327ba86@group.calendar.google.com"
-    // );
+    if (!calendars) throw new Error();
+    await Promise.all(
+      calendars.map((calendar: any) => watchCalendar(accessToken, calendar.id))
+    );
+    console.log(accessToken);
+    console.log("acacacacacac");
+    await watchCalendar(
+      accessToken,
+      "b3ab1ef4dca6131054542def12412843e857728ce2189aa22588927ef327ba86@group.calendar.google.com"
+    );
 
     return NextResponse.json(calendars);
   } catch (error) {
