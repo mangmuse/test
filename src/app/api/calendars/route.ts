@@ -12,15 +12,12 @@ export const GET = async (req: NextRequest) => {
   try {
     const supabase = createClient();
 
-    const {
-      data: { session },
-      error,
-    } = await supabase.auth.getSession();
-    if (error || !session) {
+    const { data, error: sessionError } = await supabase.auth.getSession();
+    if (sessionError || !data.session) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    const accessToken = session.provider_token;
+    const accessToken = data.session.provider_token;
     const calendarId = req.nextUrl.searchParams.get("calendarId");
 
     if (!accessToken) {
@@ -31,13 +28,17 @@ export const GET = async (req: NextRequest) => {
     }
 
     const calendars = await getCalendars(accessToken);
+    if (!calendars) {
+      throw new Error("Failed to get calendars");
+    }
 
-    if (!calendars) throw new Error();
     await Promise.all(
       calendars.map((calendar: any) => watchCalendar(accessToken, calendar.id))
     );
+
     console.log(accessToken);
     console.log("acacacacacac");
+
     await watchCalendar(
       accessToken,
       "b3ab1ef4dca6131054542def12412843e857728ce2189aa22588927ef327ba86@group.calendar.google.com"
