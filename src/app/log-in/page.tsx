@@ -1,3 +1,4 @@
+"use client";
 const LogInPage = () => {
   return <>로그인페이지에요</>;
 };
