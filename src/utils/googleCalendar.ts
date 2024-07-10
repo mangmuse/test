@@ -47,14 +47,26 @@ export const watchCalendar = async (
 ) => {
   const oauth2Client = getOAuth2Client(accessToken);
   const calendar = google.calendar({ version: "v3", auth: oauth2Client });
-  const id = crypto.randomUUID();
+
+  const channelId = `${calendarId}-${crypto.randomUUID()}`;
+  console.log(
+    calendarId,
+    "calendarIdcalendarIdcalendarIdcalendarIdcalendarIdcalendarIdcalendarIdcalendarIdcalendarIdcalendarIdcalendarId"
+  );
   const response = await calendar.events.watch({
     calendarId: calendarId,
     requestBody: {
-      id,
+      id: channelId,
       type: "web_hook",
       address: `${process.env.NEXT_PUBLIC_BASE_URL}/api/webhook`,
     },
   });
+
   return response.data;
 };
+
+// export const getOAuth2Client = (accessToken: string) => {
+//   const oauth2Client = new google.auth.OAuth2();
+//   oauth2Client.setCredentials({ access_token: accessToken });
+//   return oauth2Client;
+// };
