@@ -13,7 +13,7 @@ export async function GET(request: NextRequest) {
   const { data, error } = await supabase.auth.signInWithOAuth({
     provider: "google",
     options: {
-      redirectTo: `https://test.vercel.app/api/log-in/callback`,
+      redirectTo: `https://test-one-zeta-77.vercel.app/api/log-in/callback`,
       scopes: "https://www.googleapis.com/auth/calendar",
     },
   });
