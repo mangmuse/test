@@ -19,7 +19,7 @@ const LogInPage = () => {
 
   return (
     <>
-      <p>로그인페이지에요</p>
+      <p>로그인인페이지에요</p>
       <button onClick={handleLogIn}>로그인 버튼이에요</button>
     </>
   );
