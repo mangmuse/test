@@ -19,6 +19,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${inter.className} h-screen w-screen`}>
         <Providers>{children}</Providers>
+        <p>안녕하세요</p>
       </body>
     </html>
   );
