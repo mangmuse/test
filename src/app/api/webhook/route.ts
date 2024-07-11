@@ -21,6 +21,6 @@ import { NextRequest, NextResponse } from "next/server";
 
 //   return NextResponse.json({ message: "POST response", data });
 // }
-export async function POST() {
+export async function GET() {
   return NextResponse.json("포스트");
 }
