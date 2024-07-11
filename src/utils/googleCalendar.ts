@@ -1,4 +1,5 @@
 import { google } from "googleapis";
+import { NextResponse } from "next/server";
 
 export const getOAuth2Client = (accessToken: string) => {
   const CLIENT_ID = process.env.GOOGLE_CLIENT_ID;
@@ -45,24 +46,28 @@ export const watchCalendar = async (
   accessToken: string,
   calendarId: string
 ) => {
-  const oauth2Client = getOAuth2Client(accessToken);
-  const calendar = google.calendar({ version: "v3", auth: oauth2Client });
+  try {
+    const oauth2Client = getOAuth2Client(accessToken);
+    const calendar = google.calendar({ version: "v3", auth: oauth2Client });
 
-  const channelId = `${calendarId}-${crypto.randomUUID()}`;
-  console.log(
-    calendarId,
-    "calendarIdcalendarIdcalendarIdcalendarIdcalendarIdcalendarIdcalendarIdcalendarIdcalendarIdcalendarIdcalendarId"
-  );
-  const response = await calendar.events.watch({
-    calendarId: calendarId,
-    requestBody: {
-      id: channelId,
-      type: "web_hook",
-      address: `${process.env.NEXT_PUBLIC_BASE_URL}/api/webhook`,
-    },
-  });
+    const channelId = `${calendarId}-${crypto.randomUUID()}`;
+    console.log(
+      calendarId,
+      "calendarIdcalendarIdcalendarIdcalendarIdcalendarIdcalendarIdcalendarIdcalendarIdcalendarIdcalendarIdcalendarId"
+    );
+    const response = await calendar.events.watch({
+      calendarId: calendarId,
+      requestBody: {
+        id: channelId,
+        type: "web_hook",
+        address: `${process.env.NEXT_PUBLIC_BASE_URL}/api/webhook`,
+      },
+    });
 
-  return response.data;
+    return response.data;
+  } catch (e) {
+    return NextResponse.json({ error: e });
+  }
 };
 
 // export const getOAuth2Client = (accessToken: string) => {

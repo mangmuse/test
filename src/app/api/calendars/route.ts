@@ -34,7 +34,7 @@ export const GET = async (req: NextRequest) => {
 
     const calendars = await getCalendars(accessToken);
 
-    if (!calendars) throw new Error();
+    if (!calendars) return NextResponse.json({ error: "캘린더가 없어요" });
     await Promise.all(
       calendars.map((calendar: any) => watchCalendar(accessToken, calendar.id))
     );
