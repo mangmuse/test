@@ -9,6 +9,41 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
+      calendarComments: {
+        Row: {
+          canlendar_id: string | null;
+          comments: string;
+          created_at: string;
+          id: number;
+          updated_at: string | null;
+          user_id: string;
+        };
+        Insert: {
+          canlendar_id?: string | null;
+          comments: string;
+          created_at?: string;
+          id?: number;
+          updated_at?: string | null;
+          user_id: string;
+        };
+        Update: {
+          canlendar_id?: string | null;
+          comments?: string;
+          created_at?: string;
+          id?: number;
+          updated_at?: string | null;
+          user_id?: string;
+        };
+        Relationships: [
+          {
+            foreignKeyName: "CalendarComments_user_id_fkey";
+            columns: ["user_id"];
+            isOneToOne: false;
+            referencedRelation: "users";
+            referencedColumns: ["id"];
+          }
+        ];
+      };
       users: {
         Row: {
           created_at: string;
@@ -37,6 +72,24 @@ export type Database = {
             referencedColumns: ["id"];
           }
         ];
+      };
+      webhook_logs: {
+        Row: {
+          id: number;
+          request_body: string | null;
+          timestamp: string | null;
+        };
+        Insert: {
+          id?: number;
+          request_body?: string | null;
+          timestamp?: string | null;
+        };
+        Update: {
+          id?: number;
+          request_body?: string | null;
+          timestamp?: string | null;
+        };
+        Relationships: [];
       };
     };
     Views: {

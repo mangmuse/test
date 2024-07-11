@@ -38,8 +38,6 @@ export const GET = async (req: NextRequest) => {
     await Promise.all(
       calendars.map((calendar: any) => watchCalendar(accessToken, calendar.id))
     );
-    console.log(accessToken);
-    console.log("acacacacacac");
     await watchCalendar(
       accessToken,
       "b3ab1ef4dca6131054542def12412843e857728ce2189aa22588927ef327ba86@group.calendar.google.com"

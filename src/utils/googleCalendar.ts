@@ -51,10 +51,7 @@ export const watchCalendar = async (
     const calendar = google.calendar({ version: "v3", auth: oauth2Client });
 
     const channelId = `${calendarId}-${crypto.randomUUID()}`;
-    console.log(
-      calendarId,
-      "calendarIdcalendarIdcalendarIdcalendarIdcalendarIdcalendarIdcalendarIdcalendarIdcalendarIdcalendarIdcalendarId"
-    );
+
     const response = await calendar.events.watch({
       calendarId: calendarId,
       requestBody: {
