@@ -10,7 +10,9 @@ export async function POST(req: NextRequest) {
 
   console.log("Webhook data:", body);
 
-  await supabase.from("webhook_logs").insert([{ request_body: body }]);
+  const { data, error } = await supabase
+    .from("webhook_logs")
+    .insert([{ request_body: body }]);
 
   if (error) {
     console.error("Error saving log to Supabase:", error);
