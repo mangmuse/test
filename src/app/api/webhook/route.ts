@@ -1,6 +1,7 @@
 import { NextApiRequest, NextApiResponse } from "next";
 // import { watchCalendar } from "../../../utils/googleCalendar";
 import { createClient } from "@/utils/supabase/server";
+import { watchCalendar } from "@/utils/googleCalendar";
 
 export const POST = async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method === "POST") {
