@@ -47,8 +47,8 @@ export const watchCalendar = async (
 ) => {
   const oauth2Client = getOAuth2Client(accessToken);
   const calendar = google.calendar({ version: "v3", auth: oauth2Client });
+
   const channelId = `${calendarId}-${crypto.randomUUID()}`;
-  const resourceId = crypto.randomUUID();
   console.log(
     calendarId,
     "calendarIdcalendarIdcalendarIdcalendarIdcalendarIdcalendarIdcalendarIdcalendarIdcalendarIdcalendarIdcalendarId"
@@ -58,8 +58,7 @@ export const watchCalendar = async (
     requestBody: {
       id: channelId,
       type: "web_hook",
-      address: `https://test-one-zeta-77.vercel.app/api/webhook`,
-      token: resourceId,
+      address: `${process.env.NEXT_PUBLIC_BASE_URL}/api/webhook`,
     },
   });
 
