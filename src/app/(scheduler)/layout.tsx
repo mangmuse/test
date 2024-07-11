@@ -6,7 +6,7 @@ const SchedulerLayout = ({ children }: PropsWithChildren) => {
   return (
     <div className="flex h-screen">
       <SideBar />
-
+      이게 변경사항
       <div className="flex flex-grow">
         <div className="relative h-full w-full flex flex-col bg-slate-300">
           <Button className="absolute top-4 right-4">일정 추가하기</Button>
